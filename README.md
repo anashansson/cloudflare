@@ -2,11 +2,11 @@ CloudFlare IP Switcher
 ===========================
 ```sh
 # 1) Clone this repository
-git clone https://github.com/anashansson/cloudflare
+$ git clone https://github.com/anashansson/cloudflare
 
 # 2) Open the folder
-cd cloudflare
+$ cd cloudflare
 
 # 3) Run the script
-python cloudflare.py
+$ python cloudflare.py
 ```
