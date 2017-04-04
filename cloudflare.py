@@ -21,10 +21,10 @@ class CloudFlare(object):
 
 	def apiCall(self, method, type = "GET", data = None):
 		apiUrl = "https://api.cloudflare.com/client/v4"
-		if method == "POST":
-			r = requests.post(apiUrl + method, headers = self.getHeader(), data = data)
-		elif method == "PUT":
-			r = requests.put(apiUrl + method, headers = self.getHeader(), data = data)
+		if type == "POST":
+			r = requests.post(apiUrl + method, headers = self.getHeader(), data = json.dumps(data))
+		elif type == "PUT":
+			r = requests.put(apiUrl + method, headers = self.getHeader(), data = json.dumps(data))
 		else:
 			if data == None:
 				r = requests.get(apiUrl + method, headers = self.getHeader())
@@ -71,14 +71,9 @@ for page in xrange(0,pages):
 					'ttl': record['ttl']
 				}
 
-				res = cf.apiCall("/zones/"+zone_id+"/dns_records/"+identifier,"PUT")['result']
+				res = cf.apiCall("/zones/"+zone_id+"/dns_records/"+identifier,"PUT",data)['result']
 
 				if res != None:
 					logger.success(res['name'])
 				else:
 					logger.fail(record['name'])
-
-
-
-
-
