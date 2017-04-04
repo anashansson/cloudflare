@@ -7,6 +7,6 @@ git clone https://github.com/anashansson/cloudflare
 # 2) Open the folder
 cd cloudflare
 
-# 3) Run script
+# 3) Run the script
 python cloudflare.py
 ```
